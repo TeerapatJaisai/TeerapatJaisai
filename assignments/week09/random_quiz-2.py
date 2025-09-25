@@ -63,3 +63,66 @@ def get_range_hint(number, current_min=1, current_max=100):
 def get_thefirst_digit_hint(number):
     # Retun the first digit of the number
     pass
+
+
+import random
+ 
+def get_parity_hint(number):
+    if number % 2 == 0:
+        return "HINT: The number is even"
+    else:
+        return "HINT: The number is odd"
+ 
+def get_divisibility_hint(number):
+    if number % 3 == 0:
+        return "HINT: The number is divisible by 3"
+    elif number % 5 == 0:
+        return "HINT: The number is divisible by 5"
+    else:
+        return "HINT: The number is NOT divisible by 3 or 5"
+ 
+def get_range_hint(number, current_min=1, current_max=100):
+    # Return narrowed range around the number
+    return f"HINT : The narrowed range {range(current_min, current_max)}"
+ 
+def get_thefirst_digit_hint(number):
+    # Retun the first digit of the number
+    return f"HINT : The first digit of number is {number // 10}"
+ 
+import random
+ 
+#สุ่มเลขระหว่าง 0 - 9
+test_random = random.randint(1, 20)
+ 
+print("--เกมทายตัวเลข มาเดาใจตอมพิวเตอร์กันเถอะ --")
+print("--ทายเลขจำนวนเต็มตั้งเเต่ 1 - 100 --")
+print("--มีโอกาส unlimited --")
+ 
+i = 1
+ 
+while True:
+ 
+    #รับค่าการทายเลขจากผู้ใช้
+    print(f"ความพยายามครั้งที่ {i+1}")
+    guess_number = int(input("What if your guess number (1-100)?: "))
+ 
+# condition ==> if-elif-else
+    if test_random == guess_number:
+        print("ยูเก่งมาก มั่วถูกตั้งเเต่ครั้งเเรกเลย เทพจริงๆ ")
+        break
+    elif guess_number < test_random:
+        print("ผิดจ้า น้อยไปเนอะ")
+ 
+    elif guess_number > test_random:
+        print("ผิดจ้า มากไปหน่อย")
+ 
+    if i == 3:
+        print(get_parity_hint(test_random))
+    elif i == 5:
+        print(get_divisibility_hint(test_random))
+    elif i == 7:
+        print(get_range_hint(test_random, test_random-12, test_random+12))
+    elif i == 10:
+        print(get_thefirst_digit_hint(test_random))
+ 
+    i = i + 1
